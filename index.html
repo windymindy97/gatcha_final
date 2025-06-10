@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎰 추억의 뽑기판</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background-color: #fff8e1;
+      font-family: 'Press Start 2P', cursive;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 16px;
+      color: #d60039;
+      text-shadow: 2px 2px #000;
+      margin-bottom: 30px;
+    }
+
+    .gacha-box {
+      background: repeating-linear-gradient(
+        45deg,
+        #ffe066,
+        #ffe066 10px,
+        #fab005 10px,
+        #fab005 20px
+      );
+      padding: 30px 20px;
+      border: 6px solid #000;
+      border-radius: 20px;
+      box-shadow: 6px 6px 0 #333;
+      width: 90%;
+      max-width: 360px;
+    }
+
+    button {
+      font-family: 'Press Start 2P', cursive;
+      font-size: 12px;
+      background-color: #00b894;
+      color: white;
+      padding: 15px 25px;
+      border: 4px solid #000;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 3px 3px #000;
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    button:active {
+      transform: translateY(2px);
+      box-shadow: 1px 1px #000;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 14px;
+      color: #000;
+      background: #fff;
+      border: 3px dashed #d60039;
+      padding: 15px;
+      border-radius: 10px;
+      min-height: 50px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎰 추억의 뽑기판 🎰</h1>
+  <div class="gacha-box">
+    <button onclick="draw()">▶ 뽑기!</button>
+    <div id="result">👇 여기를 주목하세요</div>
+  </div>
+
+  <script>
+    const items = [
+      "🍭 사탕",
+      "💣 꽝!",
+      "🎟️ 영화관람권",
+      "🐣 병아리 인형",
+      "💵 천원!",
+      "🍫 초콜릿",
+      "📱 미니 핸드폰줄",
+      "😢 다시 도전!",
+      "🧸 곰인형",
+      "💎 대박! 문화상품권"
+    ];
+
+    function draw() {
+      const resultBox = document.getElementById("result");
+      resultBox.innerHTML = "⏳ 뽑는 중...";
+      setTimeout(() => {
+        const item = items[Math.floor(Math.random() * items.length)];
+        resultBox.innerHTML = `🎉 <strong>${item}</strong>`;
+        if (navigator.vibrate) navigator.vibrate(200); // 진동 피드백 (모바일용)
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
